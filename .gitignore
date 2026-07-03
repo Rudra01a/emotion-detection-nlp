@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+venv/
+.venv/
+
+# Data (too large / not meant for git history)
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Trained model artifacts
+# NOTE: kept trackable (not ignored) — Streamlit Cloud deploys straight from
+# this repo and needs the .pkl files. Fine for TF-IDF + Logistic Regression
+# (small files). Would NOT be fine for large deep-learning weights.
+
+# OS/editor junk
+.DS_Store
+.vscode/
