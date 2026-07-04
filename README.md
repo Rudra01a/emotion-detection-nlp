@@ -91,7 +91,7 @@ streamlit run app.py            # launch the interactive demo
 
 ## Live Demo
 
-_Link added after Streamlit Cloud deployment (Phase 13)._
+[  (https://emotion-detection-nlp-3urazhhf8ey8szg3wafy5k.streamlit.app/) ]
 
 ## Limitations & Future Improvements
 
