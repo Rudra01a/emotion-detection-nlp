@@ -104,5 +104,4 @@ _Link added after Streamlit Cloud deployment (Phase 13)._
 - [Full Project Report](reports/REPORT.md)
 
 ## Author
-
-Rudra Pratap Singh 
+Rudra Pratap Singh
