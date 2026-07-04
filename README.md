@@ -102,7 +102,6 @@ _Link added after Streamlit Cloud deployment (Phase 13)._
 ## Documentation
 
 - [Full Project Report](reports/REPORT.md)
-- [Interview & Viva Preparation](reports/INTERVIEW_PREP.md)
 
 ## Author
 
