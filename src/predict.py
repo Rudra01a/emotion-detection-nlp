@@ -1,34 +1,21 @@
 """
 Prediction system: predict_emotion(text) -> (label, confidence)
-NOTE: retrains the model on each run for now — Phase 9 will persist the
-trained model + vectorizer with joblib so this becomes instant.
+Loads the saved model + vectorizer from Phase 9 — no retraining.
+This is the Phase 0 inference pipeline, now fully realized.
 """
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.svm import LinearSVC
-from sklearn.calibration import CalibratedClassifierCV
-from features import load_and_clean
+import joblib
 from preprocessing import clean_text
 
 LABEL_NAMES = ["sadness", "joy", "love", "anger", "fear", "surprise"]
 
 
-def build_model():
-    (train_texts, train_labels), _, _ = load_and_clean()
-    vectorizer = TfidfVectorizer(max_features=5000)
-    X_train = vectorizer.fit_transform(train_texts)
-
-    base_svm = LinearSVC()
-    model = CalibratedClassifierCV(base_svm, cv=5)
-    model.fit(X_train, train_labels)
-
+def load_artifacts():
+    model = joblib.load("models/emotion_model.pkl")
+    vectorizer = joblib.load("models/tfidf_vectorizer.pkl")
     return model, vectorizer
 
 
 def predict_emotion(text, model, vectorizer):
-    """
-    Takes raw text, applies the SAME preprocessing + vectorizer used in
-    training (transform only, never fit), returns (label, confidence).
-    """
     cleaned = clean_text(text)
     vector = vectorizer.transform([cleaned])
     probs = model.predict_proba(vector)[0]
@@ -41,7 +28,7 @@ def predict_emotion(text, model, vectorizer):
 
 
 if __name__ == "__main__":
-    model, vectorizer = build_model()
+    model, vectorizer = load_artifacts()
 
     test_sentences = [
         "I just got promoted at work, I can't stop smiling!",
